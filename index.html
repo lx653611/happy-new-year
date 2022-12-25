@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Email Validation Javascript</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	
+
+	<div class="box">
+		<h3>我们在一起多少天了？(5.20是第一天)</h3>
+		<form id="form" action="#">
+			<div class="inputBox">
+				<input type="text" id="days" placeholder="输入三位天数" onkeyup="validate()">
+				<span id="text"></span>
+			</div>
+		</form>
+	</div>
+	<script>
+		function validate(){
+			let form = document.getElementById('form');
+			let days = document.getElementById('days').value;
+			let text = document.getElementById('text');
+			let date1 = new Date("05/20/2022");  
+            let date2 = new Date("12/31/2022"); 
+			let today=new Date();
+			let date3 = (today.getMonth()+1)+'-'+today.getDate()+'-'+today.getFullYear();
+			let time_difference = new Date().getTime() - date1.getTime(); 
+			let days_difference = Math.ceil(time_difference / (1000 * 60 * 60 * 24));  
+			
+            
+			if (days == days_difference)
+			{
+				form.classList.add('valid');
+				form.classList.remove('invalid');
+				text.innerHTML = "答对了！宝宝最厉害了！";
+				text.style.color = "#000000";
+				
+				function greet() {
+					window.open("https://lx653611.github.io/photos","_self");
+					}
+					setTimeout(greet, 1200); 
+				
+			}
+			
+			else
+			{
+				form.classList.remove('valid');
+				form.classList.add('invalid');
+				text.innerHTML = "你输入的天数不正确，宝宝再想想。"
+				text.style.color = "#f44336";
+			}
+			
+		}
+	</script>
+</body>
+</html>
